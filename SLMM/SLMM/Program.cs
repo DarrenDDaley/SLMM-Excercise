@@ -192,14 +192,14 @@ namespace SLMM
 
             if (input.Count(i => i == ',') == 1)
             {
-                string[] diemensions = input.Split(',');
+                string[] dimensions = input.Split(',');
 
-                if (int.TryParse(diemensions[0], out maxWidth) == false) {
+                if (int.TryParse(dimensions[0], out maxWidth) == false) {
                     dataInvalid = true;
                     Console.WriteLine("Please enter numbers for the width.");
                 }
 
-                if (int.TryParse(diemensions[1], out maxHeight) == false) {
+                if (int.TryParse(dimensions[1], out maxHeight) == false) {
                     dataInvalid = true;
                     Console.WriteLine("Please enter numbers for the height.");
                 }
