@@ -111,26 +111,22 @@ namespace SLMM
             const int threadSleepTime = 10000;
             Thread.Sleep(threadSleepTime);
 
-            if (direction == Direction.Left)
-            {
+            if (direction == Direction.Left) {
                 direction = Direction.Up;
                 return MowerStatus(threadSleepTime, "turned the mower up");
             }
 
-            if (direction == Direction.Right)
-            {
+            if (direction == Direction.Right) {
                 direction = Direction.Down;
                 return MowerStatus(threadSleepTime, "turned the mower down");
             }
 
-            if (direction == Direction.Up)
-            {
+            if (direction == Direction.Up) {
                 direction = Direction.Right;
                 return MowerStatus(threadSleepTime, "turned the mower right");
             }
 
-            if (direction == Direction.Down)
-            {
+            if (direction == Direction.Down) {
                 direction = Direction.Left;
                 return MowerStatus(threadSleepTime, "turned the mower left");
             }
@@ -176,9 +172,9 @@ namespace SLMM
 
         private static string MowerStatus(int time, string action)
         {
-            string timeString = time.ToString();
+            const int milliseconds = 1000;
             return String.Format("Time: {0} seconds - Action: {1} - Position: X-{2}, Y-{3}.",
-                                   timeString.Remove(timeString.Length - 3), action, XPos, YPos);
+                                   time / milliseconds , action, XPos, YPos);
         }
 
         private static void DataValidation()
@@ -198,14 +194,12 @@ namespace SLMM
             {
                 string[] diemensions = input.Split(',');
 
-                if (int.TryParse(diemensions[0], out maxWidth) == false)
-                {
+                if (int.TryParse(diemensions[0], out maxWidth) == false) {
                     dataInvalid = true;
                     Console.WriteLine("Please enter numbers for the width.");
                 }
 
-                if (int.TryParse(diemensions[1], out maxHeight) == false)
-                {
+                if (int.TryParse(diemensions[1], out maxHeight) == false) {
                     dataInvalid = true;
                     Console.WriteLine("Please enter numbers for the height.");
                 }
@@ -217,7 +211,7 @@ namespace SLMM
             }
         }
 
-        public static int Clamp(int value, int min, int max) {
+        private static int Clamp(int value, int min, int max) {
             return (value < min) ? min : (value > max) ? max : value;
         }
     }
